@@ -13,15 +13,17 @@ new_data_list = data_list_creator(data_list)
 
 # top_fifty_most_years = list(filter(lambda data: data.id <= 50, new_data_list))
 # for data in top_fifty_most_years:
-#     print(f'The book {data.name} has been in the top 50 for {str(data.moons)} years!')
+#     print(f'The book {data.name} has been in the top 50 for {str(data.years)} years!')
 
-# sorted_data = sorted(new_data_list,key=lambda book: book.name)
-# for data in sorted_data:
-#      print(data.name)
-#             OR
-sorted_data = sorted(new_data_list,key=lambda book: book.user_rating, reverse=True)
-for data in sorted_data:
-    print( )
+
+sorted_by_user_rating = sorted(new_data_list,key=lambda book: book.user_rating, reverse=True)
+sorted_by_rating_and_review = sorted(sorted_by_user_rating, key=lambda book: book.number_of_reviews, reverse=True)
+
+c = Counter
+# for data in sorted_by_user_rating:
+#     print(sorted_by_user_rating['name']['year'])
+most_by_rating_and_review = c(sorted_by_rating_and_review.name).most_common()[0]
+print(most_by_rating_and_review)
 # most_common = counter(data_list).most_common()
 # print(data for data in data_list.most_common for data in ['years'])
 
