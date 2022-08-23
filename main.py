@@ -21,24 +21,27 @@ def genre_most_appeared (books):
     top_genre = {'genre':'','count':0}
     book_genre = [book.genre for book in books]    
     fiction_and_non_fiction_count = Counter(book_genre)
+   
     
-  
-    print('This genre has appeared the most in the top 50s list: ')
+    print('Here are the findings for the genre that has appeared the most in the top 50s list: ')
     print(fiction_and_non_fiction_count)
     print('')
 
 def author_the_most (books):
     top_author = {'author':'','count':0}
-    book_author = [book.author for book in books]    
-    book_author_distinct = set(book_author)
-    for distinct_book_author in book_author_distinct:
-        list_of_specific_authors = [book_author for book_author in top_author if book_author == distinct_book_author]
-        if top_author['count'] < len(list_of_specific_authors):
-            top_author['author'] = distinct_book_author
-            top_author['count'] = len(list_of_specific_authors)
-    print('This author has shown up on the top 50s list the most:')
-    print(f"Author: {top_author['author']}")
-    print(f"Times in Top 50: {top_author['count']}")
+    book_authors = [book.author for book in books]   
+    author_count = Counter(book_authors) 
+    print(author_count)
+
+    # for distinct_book_author in book_author_distinct:
+    #     list_of_specific_authors = [book_author for book_author in top_author if book_author == distinct_book_author]
+    #     if top_author['count'] < len(list_of_specific_authors):
+    #         top_author['author'] = distinct_book_author
+    #         top_author['count'] = len(list_of_specific_authors)
+
+    # print('This author has shown up on the top 50s list the most:')
+    # print(f"Author: {top_author['author']}")
+    # print(f"Times in Top 50: {top_author['count']}")
 
 def run():
     
