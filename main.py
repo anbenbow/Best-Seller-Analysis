@@ -19,9 +19,8 @@ def book_for_most_years (books):
     print('')
 
 def genre_most_appeared (books):
-    top_genre = {'genre':'','count':0}
     books_that_are_fiction = [book for book in books if book.genre == 'Fiction']
-    books_that_are_non_fiction = [book for book in books if book.genre == 'Non-Fiction']
+    books_that_are_non_fiction = [book for book in books if book.genre == 'Non Fiction']
 
     fiction_count = len(books_that_are_fiction)
     non_fiction_count = len(books_that_are_non_fiction)
@@ -32,15 +31,29 @@ def genre_most_appeared (books):
         print('There are the same amount of Fiction and Non-Fiction books in the top 50 list.')
     else:
         print(f"Based on my findings there are more Non-Fiction books in the top 50 list than Fiction.\nFiction Count: {fiction_count}\nNon-Fiction Count: {non_fiction_count}") 
-    
-    print('')
+        print('')
 
 def author_the_most (books):
-    top_author = {'author':'','count':0}
-    book_authors = [book.author for book in books]   
-    author_count = Counter(book_authors) 
-    print(author_count)
+    distinct_books = []
+    
+    for book in books:
+        current_book_names_in_list = [dist_book.name for dist_book in distinct_books]
+        if book.name not in current_book_names_in_list:
+            distinct_books.append(book)
 
+    author_names = [dist_book.author for dist_book in distinct_books]
+    distinct_author_names = set(author_names)
+
+    top_author = {'name':'','count':0}
+
+    for distinct_author in distinct_author_names:
+        list_of_author_duplicates = [author for author in author_names if author == distinct_author]
+        if top_author['count'] < len(list_of_author_duplicates):
+            top_author['name'] = distinct_author
+            top_author['count'] = len(list_of_author_duplicates)
+    print(f"Here is the result for the author that appears the most in the top 50 list:\nAuthor Name: {top_author['name']}\nNumber of Books: {top_author['count']}")              
+    print('')
+    
   
 
 
@@ -61,7 +74,7 @@ def run():
     book_for_most_years(books)
     genre_most_appeared(books)
     author_the_most(books)
- 
+   # books_for_each_year(books)
 
 
 
