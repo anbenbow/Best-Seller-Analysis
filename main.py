@@ -17,14 +17,22 @@ def book_for_most_years (books):
     print(f"Name: {current_top_book['name']}")
     print(f"Times in Top 50: {current_top_book['count']}")
     print('')
+
 def genre_most_appeared (books):
     top_genre = {'genre':'','count':0}
-    book_genre = [book.genre for book in books]    
-    fiction_and_non_fiction_count = Counter(book_genre)
-   
+    books_that_are_fiction = [book for book in books if book.genre == 'Fiction']
+    books_that_are_non_fiction = [book for book in books if book.genre == 'Non-Fiction']
+
+    fiction_count = len(books_that_are_fiction)
+    non_fiction_count = len(books_that_are_non_fiction)
+
+    if fiction_count > non_fiction_count:
+        print(f"Based on my findings there are more Fiction books in the top 50 list than Non-Fiction.\nFiction Count: {fiction_count}\nNon-Fiction Count: {non_fiction_count}")
+    elif fiction_count == non_fiction_count:
+        print('There are the same amount of Fiction and Non-Fiction books in the top 50 list.')
+    else:
+        print(f"Based on my findings there are more Non-Fiction books in the top 50 list than Fiction.\nFiction Count: {fiction_count}\nNon-Fiction Count: {non_fiction_count}") 
     
-    print('Here are the findings for the genre that has appeared the most in the top 50s list: ')
-    print(fiction_and_non_fiction_count)
     print('')
 
 def author_the_most (books):
@@ -33,15 +41,14 @@ def author_the_most (books):
     author_count = Counter(book_authors) 
     print(author_count)
 
-    # for distinct_book_author in book_author_distinct:
-    #     list_of_specific_authors = [book_author for book_author in top_author if book_author == distinct_book_author]
-    #     if top_author['count'] < len(list_of_specific_authors):
-    #         top_author['author'] = distinct_book_author
-    #         top_author['count'] = len(list_of_specific_authors)
+  
 
-    # print('This author has shown up on the top 50s list the most:')
-    # print(f"Author: {top_author['author']}")
-    # print(f"Times in Top 50: {top_author['count']}")
+
+
+
+
+
+
 
 def run():
     
@@ -55,37 +62,6 @@ def run():
     genre_most_appeared(books)
     author_the_most(books)
  
-
-
-
-    
-#    = list(filter(lambda data: data.id <= 50, new_data_list))
-# # for data in top_fifty_most_years:
-# #     print(f'The book {data.name} has been in the top 50 for {str(data.years)} years!')
-
-
-# sorted_by_user_rating = sorted(new_data_list,key=lambda book: book.user_rating, reverse=True)
-# sorted_by_rating_and_review = sorted(sorted_by_user_rating, key=lambda book: book.number_of_reviews, reverse=True)
-
-# print(sorted_by_user_rating)
-
-# c = Counter
-# # for data in sorted_by_user_rating:
-# #     print(sorted_by_user_rating['name']['year'])
-# most_by_rating_and_review = c(sorted_by_rating_and_review.name).most_common()[0]
-# print(most_by_rating_and_review)
-# # most_common = counter(data_list).most_common()
-# # print(data for data in data_list.most_common for data in ['years'])
-
-
-
-# author_the_most = lambda : print('This author has shown up on the top 50s list the most:')
-# #author:
-# #times in top 50:
-# books_for_each_year = lambda : print('These are the top books for each year:')
-# #year:
-#name:
-#author
 
 
 
