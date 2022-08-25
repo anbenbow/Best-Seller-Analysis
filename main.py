@@ -53,10 +53,23 @@ def author_the_most (books):
             top_author['count'] = len(list_of_author_duplicates)
     print(f"Here is the result for the author that appears the most in the top 50 list:\nAuthor Name: {top_author['name']}\nNumber of Books: {top_author['count']}")              
     print('')
-    
+
+def books_for_each_year (books):
+    # oh_nine_books = []
+    # top_of_oh_nine = {'number_of_reviews':'','count':0}
+    for book in books:
+        book_years = [book.year for book in books]
+        book_reviews = [book.number_of_reviews for book in books]
+        
+        
+        books_sorted_by_year = sorted(book_years, book_reviews,reverse=True)
+    #     
+    #     books_sorted_by_reviews = sorted(book_reviews, reverse=True)
+    # #books_sorted_by_year_and_review=
+    print(books_sorted_by_year)
+  #  for book in books_sorted_by_year:
+     
   
-
-
 
 
 
@@ -74,7 +87,7 @@ def run():
     book_for_most_years(books)
     genre_most_appeared(books)
     author_the_most(books)
-   # books_for_each_year(books)
+    books_for_each_year(books)
 
 
 
